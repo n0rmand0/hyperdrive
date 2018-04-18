@@ -1,0 +1,20 @@
+{
+  "name": "release-the-friction",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "build-error-notifier": "^1.0.0",
+    "node-sass-chokidar": "^1.2.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "yarn build-css && react-scripts start & yarn watch-css",
+    "build": "yarn build-css && yarn build-app",
+    "build-css": "node-sass-chokidar src/styles/all.scss src/styles/build.css --output-style compressed 2>&1 | build-error-notifier",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "watch-css": "npm run build-css && node-sass-chokidar src/styles/all.scss src/styles/build.css --watch --recursive 2>&1 | build-error-notifier"
+  }
+}
