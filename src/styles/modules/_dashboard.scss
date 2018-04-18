@@ -1,0 +1,9 @@
+.dashboard {
+  background: #fff;
+  min-height: 92vh;
+}
+
+.dashboard-container {
+  @include container;
+  animation: fade-up .3s ease 0s 1 normal none;
+}

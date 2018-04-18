@@ -3,8 +3,12 @@
 
 .header {
   background: $gray-gradient;
-  height: auto;
-  padding: $large-spacing;
+  height: 40vh;
+  transition: all .3s;
+}
+
+.is-dashboard .header {
+  height: 5vh;
 }
 
 
@@ -18,5 +22,11 @@
 }
 
 .header__logo {
-  width: 400px;
+  height: 60px;
+  width: auto;
+  transition: all .3s;
+}
+
+.is-dashboard .header__logo {
+  height: 3vh;
 }

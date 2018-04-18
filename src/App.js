@@ -6,6 +6,7 @@ import * as firebase from "firebase";
 import Splash from './Splash.js';
 import Stage1 from './Stage1.js';
 import Stage2 from './Stage2.js';
+import Dashboard from './Dashboard.js';
 
 
 const config = {
@@ -67,17 +68,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={this.state.stage ===3 ? "App is-dashboard" : "App"}>
 
         <header className="header">
           <div className="header__container">
             <img src={logo} className="header__logo" alt="logo" />
           </div>
         </header>
-        <main className="stage-container">
-          <div className="l-center">
-            <h3>Stage: {this.state.stage}</h3>
-          </div>
+
           {
              this.state.stage===0 &&
              <Splash saveStage={this.handleSaveStage}/>
@@ -90,9 +88,16 @@ class App extends Component {
             this.state.stage===2 &&
             <Stage2 saveStage={this.handleSaveStage}/>
           }
+          {
+            this.state.stage===3 &&
+            <Dashboard saveStage={this.handleSaveStage}/>
+          }
 
-        </main>
-        <footer className="footer"></footer>
+
+
+        <footer className="footer">
+          <a onClick={ ()=>{this.setState({stage:0})} }>restart</a>
+        </footer>
       </div>
     );
   }
