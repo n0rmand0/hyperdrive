@@ -2,8 +2,9 @@
 ////////////////////////////////////////////////////////////////
 
 .header {
-  background: $dark-gray;
-  height: 100px;
+  background: $gray-gradient;
+  height: auto;
+  padding: $large-spacing;
 }
 
 
@@ -17,5 +18,5 @@
 }
 
 .header__logo {
-  width: 300px;
+  width: 400px;
 }

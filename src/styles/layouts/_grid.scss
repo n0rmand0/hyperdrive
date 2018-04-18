@@ -20,6 +20,10 @@
   grid-column-gap: $base-spacing;
 }
 
+.l-center {
+  text-align: center;
+}
+
 // Full width
 .l-full {
   grid-column: span 12;

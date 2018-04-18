@@ -16,7 +16,7 @@ legend {
 
 label {
   display: block;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: $small-spacing / 2;
 }
 
@@ -25,11 +25,11 @@ textarea,
 select {
   display: block;
   width: 100%;
-  margin-bottom: $small-spacing;
+  margin-bottom: $base-spacing;
   padding: $small-spacing;
   font-family: $base-font-family;
   font-size: 1em;
-  background-color: $base-background-color;
+  background-color: #fff;
   border: $base-border;
   border-radius: $base-border-radius;
   box-sizing: border-box;
