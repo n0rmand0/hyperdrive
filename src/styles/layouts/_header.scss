@@ -1,2 +1,21 @@
 // SITE HEADER LAYOUT STYLES
 ////////////////////////////////////////////////////////////////
+
+.header {
+  background: $dark-gray;
+  height: 100px;
+}
+
+
+.header__container {
+  @include container;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.header__logo {
+  width: 300px;
+}

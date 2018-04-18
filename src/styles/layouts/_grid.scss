@@ -1,12 +1,21 @@
 // GRID LAYOUT - Canned layout styles that can be used anywhere
 ////////////////////////////////////////////////////////////////
-
-.l-container {
+@mixin container {
   position: relative;
-  display: grid;
+  display: block;
   max-width: $max-width;
   padding: 0 $base-spacing;
   margin: auto;
+}
+
+.l-container {
+  @include container;
+}
+
+.l-container--grid {
+  @include container;
+  position: relative;
+  display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: $base-spacing;
 }

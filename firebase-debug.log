@@ -1,0 +1,31 @@
+[debug] [2018-04-18T04:33:15.602Z] ----------------------------------------------------------------------
+[debug] [2018-04-18T04:33:15.604Z] Command:       /usr/local/bin/node /Users/pl35810/.npm-packages/bin/firebase login --reauth
+[debug] [2018-04-18T04:33:15.604Z] CLI Version:   3.18.4
+[debug] [2018-04-18T04:33:15.604Z] Platform:      darwin
+[debug] [2018-04-18T04:33:15.605Z] Node Version:  v6.9.3
+[debug] [2018-04-18T04:33:15.605Z] Time:          Wed Apr 18 2018 00:33:15 GMT-0400 (EDT)
+[debug] [2018-04-18T04:33:15.605Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on any device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=942048431&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2018-04-18T04:33:22.930Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/AAB0sx74xUX8n_7WsRlWW2J9lKipK_mp87MiTN6RS7C404TzapouiJxisQohSSwtUExchsf5aFFmWUWVD8hCMFg',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Wed Apr 18 2018 00:33:22 GMT-0400 (EDT)
+[debug] [2018-04-18T04:33:22.967Z] Token Fetch Error: Error
+    at Error.FirebaseError (/Users/pl35810/.config/yarn/global/node_modules/firebase-tools/lib/error.js:11:16)
+    at Request._callback (/Users/pl35810/.config/yarn/global/node_modules/firebase-tools/lib/api.js:35:11)
+    at self.callback (/Users/pl35810/.config/yarn/global/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at emitOne (events.js:96:13)
+    at Request.emit (events.js:188:7)
+    at Request.onRequestError (/Users/pl35810/.config/yarn/global/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at emitOne (events.js:96:13)
+    at ClientRequest.emit (events.js:188:7)
+    at ClientRequest.onError (/Users/pl35810/.config/yarn/global/node_modules/tunnel-agent/index.js:179:21)
+    at ClientRequest.g (events.js:291:16)
