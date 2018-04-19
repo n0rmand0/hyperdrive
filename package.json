@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "yarn build-css && react-scripts start & yarn watch-css",
-    "build": "yarn build-css && yarn build-app",
+    "build": "yarn build-css && react-scripts build",
     "build-css": "node-sass-chokidar src/styles/all.scss src/styles/build.css --output-style compressed 2>&1 | build-error-notifier",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

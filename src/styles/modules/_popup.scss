@@ -1,0 +1,17 @@
+.popup-container {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: rgba(0,0,0,.2);
+}
+
+.popup {
+  width: 400px;
+  margin: auto;
+  background: #fff;
+  padding: $large-spacing;
+  color: var(--dark-gray);
+  box-shadow: 0 0 100px 0 rgba(0,0,0,.5);
+}

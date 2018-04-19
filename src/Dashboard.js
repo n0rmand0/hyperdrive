@@ -5,9 +5,8 @@ class Dashboard extends Component {
   constructor(props) {
     super(props)
       this.state = {
-         input1: "",
-         input2:"",
-         input3:""
+         popup: false,
+         currentPopup: ""
        }
     }
 
@@ -28,10 +27,37 @@ class Dashboard extends Component {
     this.props.saveStage(stage,inputs);
   }
 
+  handlePopup = (i)=>{
+    if(this.state.popup){
+      this.setState({
+        popup: false,
+        currentPopup: i
+      })
+    } else{
+      this.setState({
+        popup: true,
+        currentPopup: i
+      })
+    }
+  }
+
+  componentDidUpdate(){
+    console.log(this.state)
+  }
 
   render() {
+    const popup = <div className="popup-container">
+      <div className="popup">
+        <h3>Enter your info</h3>
+        <input type="text" name={this.state.currentPopup} onChange={this.handleInput} value={this.state[this.state.currentPopup]} />
+        <div className="button--secondary" onClick={this.handlePopup}>Submit</div>
+      </div>
+    </div>
+
     return (
       <div className="dashboard">
+
+        {this.state.popup && popup}
 
         <div className="dashboard__section">
           <div className="l-container">
@@ -68,22 +94,27 @@ class Dashboard extends Component {
               <h3>Project Breakdown</h3>
               <div className="dashboard__grid" style={{'--status-color': 'var(--red)'}}>
                 <h4 className="dashboard__grid__title">Initiative Planning</h4>
-                <div className="dashboard__grid__block">Task</div>
-                <div className="dashboard__grid__block">Task</div>
-                <div className="dashboard__grid__block">Task</div>
+                <div className="dashboard__grid__block">
+                  <h4>Task</h4>
+                  <span title="Missing data" onClick={()=>{this.handlePopup("inputP")}}>!</span>
+                </div>
+             </div>
+
+              <div className="dashboard__grid" style={{'--status-color': 'var(--red)'}}>
+                <h4 className="dashboard__grid__title">Planning <div className="dashboard__grid__progress"></div></h4>
+                <div className="dashboard__grid__block">
+                  <h4>Task</h4>
+                  <span title="Missing data">!</span>
+                </div>
               </div>
-              <div className="dashboard__grid">
-                <h4 className="dashboard__grid__title">Planning</h4>
-                <div className="dashboard__grid__block">Task</div>
-                <div className="dashboard__grid__block">Task</div>
-                <div className="dashboard__grid__block">Task</div>
-              </div>
-              <div className="dashboard__grid">
+              
+              <div className="dashboard__grid" style={{'--status-color': 'var(--red)'}}>
                 <h4 className="dashboard__grid__title">Executing</h4>
-                <div className="dashboard__grid__block">Task</div>
-                <div className="dashboard__grid__block">Task</div>
-                <div className="dashboard__grid__block">Task</div>
-              </div>
+                <div className="dashboard__grid__block">
+                  <h4>Task</h4>
+                  <span title="Missing data">!</span>
+                </div>
+            </div>
           </div>
         </div>
 

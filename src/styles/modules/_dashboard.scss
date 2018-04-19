@@ -66,11 +66,34 @@
 }
 
 .dashboard__grid__block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 150px;
   padding: $small-spacing;
   margin-right: $small-spacing;
   background-color: var(--status-color);
   color: var(--status-text-color);
+
+  h4 {
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+    font-size: 1em;
+    font-weight: 400;
+    display: inline-block;
+  }
+
+  span {
+    background: #fff;
+    color: var(--status-color);
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 1em;
+    text-align: center;
+    font-weight: 800;
+    line-height: 1.4;
+  }
 
 }
 
