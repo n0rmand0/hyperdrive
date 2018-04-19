@@ -2,24 +2,37 @@
 ////////////////////////////////////////////////////////////////
 
 // Typography
-$base-font-family:'Helvetica', sans-serif;
+$base-font-family:'Roboto', sans-serif;
 $secondary-font-family: $base-font-family;
 
 // Sizes
 $max-width: 1300px;
 $base-spacing: 1rem;
 $small-spacing: $base-spacing / 2;
-$large-spacing: $base-spacing * 3;
+$large-spacing: $base-spacing * 2;
 
 // Colors
 $dark-gray: #303A44;
 $medium-gray: #5A6771;
 $light-gray: #DEE1E3;
-$yellow: #FBB03F;
-$orange: #F7941D;
-$dark-orange: #0069AA;
 $blue: #0096D6;
 $dark-blue: #0069AA;
+$orange: #F7941D;
+$yellow: #FBC15B;
+$red: #FF837C;
+$green: #A2D291;
+:root {
+  --status-color: #DEE1E3;
+}
+.status--good {
+  --status-color: #A2D291;
+}
+.status--medium {
+  --status-color: #FBC15B;
+}
+.status--bad {
+  --status-color: #FF837C;
+}
 
 // Gradients
 $gray-gradient: linear-gradient(left, $dark-gray 0%, darken($dark-gray, 5) 100%);

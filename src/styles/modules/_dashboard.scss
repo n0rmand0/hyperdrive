@@ -1,9 +1,77 @@
 .dashboard {
   background: #fff;
   min-height: 92vh;
+  animation: fade-up .3s ease 0s 1 normal none;
 }
 
-.dashboard-container {
-  @include container;
-  animation: fade-up .3s ease 0s 1 normal none;
+.dashboard__section {
+  padding:  $large-spacing 0;
+  color: $base-background-color;
+  background: #fff;
+
+  + .dashboard__section {
+    border-top: $base-border;
+  }
+}
+
+// info boxes
+.dashboard__info {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 33%;
+
+  + .dashboard__info {
+    padding-left: $large-spacing;
+    margin-left: $large-spacing;
+    border-left: $base-border;
+  }
+
+  h2,
+  h3 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+}
+
+.dashboard__info__id {
+  font-weight: 800;
+}
+
+// task grid
+.dashboard__grid {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: $base-spacing;
+}
+
+.dashboard__grid__title {
+  width: 100%;
+  margin-bottom: $small-spacing;
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: none;
+  border-bottom: solid 4px $light-gray;
+
+}
+
+.dashboard__grid__block {
+  width: 150px;
+  padding: $small-spacing;
+  margin-right: $small-spacing;
+  background-color: var(--status-color);
+
+}
+
+// task cards
+.dashboard__task{
+  font-weight: 400;
+  border-left: solid $small-spacing var(--status-color);
+  padding-left: $small-spacing;
+  h5 {
+    margin-bottom: 0;
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: none;
+  }
 }

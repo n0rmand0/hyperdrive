@@ -72,7 +72,7 @@ class App extends Component {
 
         <header className="header">
           <div className="header__container">
-            <img src={logo} className="header__logo" alt="logo" />
+            <img src={logo} className="header__logo" alt="logo" onClick={ ()=>{this.setState({stage:0})} } />
           </div>
         </header>
 
@@ -96,7 +96,6 @@ class App extends Component {
 
 
         <footer className="footer">
-          <a onClick={ ()=>{this.setState({stage:0})} }>restart</a>
         </footer>
       </div>
     );
