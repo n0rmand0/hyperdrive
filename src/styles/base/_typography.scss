@@ -2,8 +2,8 @@
 ////////////////////////////////////////////////////////////////
 
 body {
-  background: $gray-gradient;
-  color: $base-font-color;
+  background: var(--dark-gray);
+  color: var(--base-font-color);
   font-family: $base-font-family;
   font-size: 1em;
   line-height: 1.5;
@@ -32,7 +32,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 h4 {
@@ -53,13 +53,13 @@ p {
 
 a {
   transition: color 0.2s;
-  color: $base-color;
+  color: var(--base-color);
   text-decoration: none;
 
   &:active,
   &:focus,
   &:hover {
-    color: darken($base-color, 20%);
+    color: var(--base-font-color);
     outline: none;
   }
 }
@@ -80,15 +80,15 @@ hr {
 // Alternate section colors
 ////////////////////////////////////////////////////////////////
 %inverse {
-  color: $secondary-font-color;
+  color: var(--secondary-font-color);
 
   a {
-    color: $base-color;
+    color: var(--base-color);
 
     &:active,
     &:focus,
     &:hover  {
-      color: lighten($base-color, 20%);
+      color: var(--base-color);
       outline: none;
     }
   }
@@ -99,7 +99,7 @@ hr {
   h4,
   h5,
   h6 {
-    color: $secondary-font-color;
+    color: var(--secondary-font-color)r;
   }
 
 }

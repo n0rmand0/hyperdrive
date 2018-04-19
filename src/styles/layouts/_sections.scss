@@ -8,11 +8,11 @@
 
 .l-section {
   @extend %section;
-  background:  $base-background-color;
+  background:  var(--base-background-color);
 }
 
 .l-section--secondary {
   @extend %section;
   @extend %inverse;
-  background: $secondary-background-color;
+  background: var(--secondary-background-color);
 }

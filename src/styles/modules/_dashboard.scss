@@ -6,7 +6,7 @@
 
 .dashboard__section {
   padding:  $large-spacing 0;
-  color: $base-background-color;
+  color: var(--base-background-color);
   background: #fff;
 
   + .dashboard__section {
@@ -15,12 +15,17 @@
 }
 
 // info boxes
-.dashboard__info {
+.dashboard__overview-container {
+  display: flex;
+}
+
+.dashboard__overview {
   display: inline-block;
   vertical-align: top;
   max-width: 33%;
+  margin-bottom: $base-spacing;
 
-  + .dashboard__info {
+  + .dashboard__overview {
     padding-left: $large-spacing;
     margin-left: $large-spacing;
     border-left: $base-border;
@@ -32,10 +37,15 @@
     margin-bottom: 0;
   }
 
+  p{
+    padding: 0;
+    margin: 0;
+  }
 }
 
-.dashboard__info__id {
+.dashboard__overview__id {
   font-weight: 800;
+  font-size: 1.5em;
 }
 
 // task grid
@@ -51,7 +61,7 @@
   font-size: 1em;
   font-weight: 400;
   text-transform: none;
-  border-bottom: solid 4px $light-gray;
+  border-bottom: solid 4px var(--light-gray);
 
 }
 
@@ -60,6 +70,7 @@
   padding: $small-spacing;
   margin-right: $small-spacing;
   background-color: var(--status-color);
+  color: var(--status-text-color);
 
 }
 

@@ -7,7 +7,7 @@
   padding: .5em 1em;
   color: #fff !important;
   background-color: transparent;
-  border: 2px solid  $yellow;
+  border: 2px solid  var(--yellow);
   border-radius: $base-border-radius;
   font-size: 1.2em;
   font-weight: 100;
@@ -30,8 +30,8 @@
   &:active,
   &.active {
     color: #fff;
-    background-color: $base-color;
-    border-color: $base-color;
+    background-color: var(--base-color);
+    border-color: var(--base-color);
     outline: 0;
     text-decoration: none;
   }
@@ -54,14 +54,14 @@ button,
 .button--secondary {
   @extend %button-base;
   color: #fff!important;
-  background-color: $base-color;
-  border-color: $base-color;
+  background-color: var(--base-color);
+  border-color: var(--base-color);
 
   &:hover,
   &:active,
   &.active{
-    background-color: lighten($base-color, 10);
-    border-color: $base-color;
+    background-color: var(--yellow);
+    border-color: var(--yellow);
   }
 }
 
@@ -102,4 +102,15 @@ button,
   content: "›";
   font-size: 1em;
   line-height: 0;
+}
+
+.tag {
+  background: var(--status-color);
+  display: inline-block;
+  color: var(--status-text-color);
+  padding: 0 $small-spacing;
+  font-size: .8em;
+  font-weight: 400;
+  border-radius: 2em;
+
 }
