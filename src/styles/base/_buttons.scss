@@ -44,6 +44,10 @@
 button,
 .button {
   @extend %button-base;
+
+  + .button {
+    margin-left: $base-spacing;
+  }
 }
 
 // Secondary Button

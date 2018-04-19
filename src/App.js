@@ -50,7 +50,7 @@ class App extends Component {
   constructor() {
     super()
       this.state = {
-         stage: 0,
+         stage: 1,
        }
     }
 
@@ -68,7 +68,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className={this.state.stage ===3 ? "App is-dashboard" : "App"}>
+      <div className={this.state.stage ===2 ? "App is-dashboard" : "App"}>
 
         <header className="header">
           <div className="header__container">
@@ -86,12 +86,12 @@ class App extends Component {
           }
           {
             this.state.stage===2 &&
-            <Stage2 saveStage={this.handleSaveStage}/>
-          }
-          {
-            this.state.stage===3 &&
             <Dashboard saveStage={this.handleSaveStage}/>
           }
+          {/* {
+            this.state.stage===3 &&
+            <Dashboard saveStage={this.handleSaveStage}/>
+          } */}
 
 
 
