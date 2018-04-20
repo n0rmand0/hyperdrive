@@ -23,7 +23,7 @@
 
 .timeline__progress__bar {
   position: absolute;
-  right: calc(100% - var(--progress));
+  right: 100%;
   height: 100%;
   width: 100%;
   background: var(--blue);
@@ -35,7 +35,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  right: calc(100% - var(--progress));
+  right: 100%;
   bottom: 0;
   display: block;
   z-index: 10;

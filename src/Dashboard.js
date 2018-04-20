@@ -3,10 +3,13 @@ import pin from './images/pin.png';
 import manifest from './manifest';
 
 const statusColor = (s)=>{
-  if(s==="neutral") return "--light-gray";
+  if(s==="neutral" || !s) return "--light-gray";
   if(s==="pass") return "--green";
   if(s==="danger") return "--yellow";
   if(s==="fail") return "--red";
+}
+const statusTextColor = (s)=>{
+  if(s==="neutral" || !s) return "--medium-gray";
 }
 
 class Dashboard extends Component {
@@ -54,6 +57,16 @@ class Dashboard extends Component {
   }
 
   render() {
+
+    let tasks = this.props.ipTasks.length + this.props.planTasks.length + this.props.executeTasks.length;
+
+    let completedTasks = this.props.ipTasks.filter(array=>array.status==="pass").length + this.props.planTasks.filter(array=>array.status==="pass").length + this.props.executeTasks.filter(array=>array.status==="pass").length
+
+    let progress = 100-completedTasks/tasks*100;
+    let progressPercent = progress+"%";
+
+
+
     const popup = <div className="popup-container">
       <div className="popup">
         <h3>Enter your info</h3>
@@ -87,11 +100,11 @@ class Dashboard extends Component {
           </div>
 
             <div className="timeline">
-              <div className="timeline__pin">
+              <div className="timeline__pin" style={{"right":progressPercent}}>
                 <img src={pin} alt="pin" />
               </div>
               <div className="timeline__progress">
-                <div className="timeline__progress__bar"></div>
+                <div className="timeline__progress__bar" style={{"right":progressPercent}}></div>
               </div>
             </div>
           </div>
@@ -100,7 +113,8 @@ class Dashboard extends Component {
         <div className="dashboard__section">
           <div className="l-container">
               <h3>Project Breakdown</h3>
-              <div className="dashboard__grid" style={{'--status-color': 'var(--red)'}}>
+
+              <div className="dashboard__grid">
                 <h4 className="dashboard__grid__title">Initiative Planning</h4>
 
                 {this.props.ipTasks.map(
@@ -111,23 +125,31 @@ class Dashboard extends Component {
                     </div>
                   }
                 )}
+               </div>
 
-             </div>
 
-              <div className="dashboard__grid" style={{'--status-color': 'var(--red)'}}>
+              <div className="dashboard__grid">
                 <h4 className="dashboard__grid__title">Planning <div className="dashboard__grid__progress"></div></h4>
-                <div className="dashboard__grid__block">
-                  <h4>Task</h4>
-                  <span title="Missing data">!</span>
-                </div>
+                {this.props.planTasks.map(
+                  ({name,status})=>{
+                    return  <div className="dashboard__grid__block" style={{'--status-color': 'var('+statusColor(status)+')','--status-text-color': 'var('+statusTextColor(status)+')'}}>
+                    <h4>{name}</h4>
+                    <span title="Missing data" onClick={()=>{this.handlePopup("inputP")}}>!</span>
+                    </div>
+                  }
+                )}
               </div>
 
-              <div className="dashboard__grid" style={{'--status-color': 'var(--red)'}}>
+              <div className="dashboard__grid">
                 <h4 className="dashboard__grid__title">Executing</h4>
-                <div className="dashboard__grid__block">
-                  <h4>Task</h4>
-                  <span title="Missing data">!</span>
-                </div>
+                {this.props.executeTasks.map(
+                  ({name,status})=>{
+                    return  <div className="dashboard__grid__block" style={{'--status-color': 'var('+statusColor(status)+')','--status-text-color': 'var('+statusTextColor(status)+')'}}>
+                    <h4>{name}</h4>
+                    <span title="Missing data" onClick={()=>{this.handlePopup("inputP")}}>!</span>
+                    </div>
+                  }
+                )}
             </div>
           </div>
         </div>

@@ -56,13 +56,13 @@ const database = firebase.database().ref();
 //   var errorMessage = error.message;
 //   // ...
 // });
-//
+
 
 // write data example
 // database.set({
 //   test: "gains",
 // })
-//
+
 
 // delete data example
 // database.set({
@@ -71,7 +71,7 @@ const database = firebase.database().ref();
 
 // read data example and print to console
 // database.on("value", snapshot => {console.log( snapshot.val().test )})
-//
+
 
 
 class App extends Component {
@@ -79,7 +79,7 @@ class App extends Component {
   constructor() {
     super()
       this.state = {
-         stage: 1,
+         stage: 2,
          ipTasks: [
            {
              name:"TSSC",
@@ -97,7 +97,7 @@ class App extends Component {
          planTasks: [
            {
              name:"Engagement Assessment and Plan",
-             status:""
+             status:"pass"
            },
            {
              name:"Application Request",
@@ -128,7 +128,74 @@ class App extends Component {
              status:""
            }
          ],
-         executeTasks: []
+         executeTasks: [
+           {
+             name:"Solution Requirements",
+             status:""
+           },
+           {
+             name:"Detailed Solution Design Package",
+             status:""
+           },
+           {
+             name:"Security Requirements",
+             status:""
+           },
+           {
+             name:"Permit to build",
+             status:""
+           },
+           {
+             name:"Test Strategy & Approach",
+             status:""
+           },
+           {
+             name:"Phase Gate Approval to Build",
+             status:""
+           },
+           {
+             name:"Build/Code",
+             status:""
+           },
+           {
+             name:"Server Build Request Dev",
+             status:""
+           },
+           {
+             name:"Server Build Request QA",
+             status:""
+           },
+           {
+             name:"TCOE Testing",
+             status:""
+           },
+           {
+             name:"Test Results Summary Report",
+             status:""
+           },
+           {
+             name:"Permit to Operate",
+             status:""
+           },
+           {
+             name:"eBRP - SP",
+             status:""
+           },
+           {
+             name:"Server Build Request",
+             status:""
+           },
+           {
+             name:"Pre-Deploy",
+             status:""
+           },
+           {
+             name:"Transition to BAU",
+             status:""
+           }
+
+
+         ]
 
        }
     }
