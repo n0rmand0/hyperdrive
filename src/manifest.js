@@ -1,5 +1,3 @@
-const manifest = {
-
-}
+const manifest = []
 
 export default manifest ;

@@ -1,12 +1,14 @@
 import manifest from "./manifest";
 
+var serviceNowTasks;
+
 const serviceNow = (tableName)=>{
 
   var requestBody = "";
   let response;
 
   var client=new XMLHttpRequest();
-  client.open("get","https://pncmelliniumfalcon.service-now.com/api/now/table/"+tableName+"/0e4aa80adb211b00547cf438bf961934");
+  client.open("get",tableName);
 
   client.setRequestHeader('Accept','application/json');
   client.setRequestHeader('Content-Type','application/json');
@@ -17,8 +19,9 @@ const serviceNow = (tableName)=>{
   client.onreadystatechange = function() {
   	if(this.readyState == this.DONE) {
   		// console.log( this.response);
-      manifest[tableName]=JSON.parse(this.response);
-      // console.log(manifest);
+      serviceNowTasks = (JSON.parse(this.response))
+      // console.log(serviceNowTasks);
+
   	}
   };
   client.send(requestBody);
@@ -26,4 +29,4 @@ const serviceNow = (tableName)=>{
 }
 
 
-export default serviceNow;
+export {serviceNow, serviceNowTasks};

@@ -9,7 +9,7 @@ const statusColor = (s)=>{
   if(s==="fail") return "--red";
 }
 const statusTextColor = (s)=>{
-  if(s==="neutral" || !s) return "--medium-gray";
+  if(s==="neutral") return "--medium-gray";
 }
 
 class Dashboard extends Component {
@@ -84,14 +84,14 @@ class Dashboard extends Component {
           <div className="l-container">
 
           <div className="dashboard__overview-container">
-            {/* <article className="dashboard__overview">
+            <article className="dashboard__overview">
               <h3>Project</h3>
               <h2 className="dashboard__overview__id">XXX1234567</h2>
-            </article> */}
-            {/* <article className="dashboard__overview">
+            </article>
+            <article className="dashboard__overview">
               <h3>Description</h3>
               <p>Lorem ipsum dolor ...</p>
-            </article> */}
+            </article>
             <article className="dashboard__overview">
               <h3>Progress</h3>
               <p>50/100 Tasks complete</p>

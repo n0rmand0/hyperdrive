@@ -8,12 +8,14 @@ import Splash from './Splash';
 import Stage1 from './Stage1';
 import Stage2 from './Stage2';
 import Dashboard from './Dashboard';
-import serviceNow from "./servicenow";
+import {serviceNow, serviceNowTasks} from "./servicenow";
 import demo from './demo';
 
+// import manifest from './manifest';
+// import retrieveListItems from './sharepoint';
 
-// service now stuff
-serviceNow("u_pto");
+// sharepoint stuff
+// retrieveListItems();
 
 
 ////////////////////////////////////////////////////////////////
@@ -72,6 +74,13 @@ const database = firebase.database().ref();
 // read data example and print to console
 // database.on("value", snapshot => {console.log( snapshot.val().test )})
 
+// service now stuff
+var pto = "https://pncmelliniumfalcon.service-now.com/api/now/table/u_pto"
+var ptb = "https://pncmelliniumfalcon.service-now.com/api/now/table/u_ptb_2"
+var buildreq = "https://pncmelliniumfalcon.service-now.com/api/now/table/u_server_build_request"
+var eastr = "https://pncmelliniumfalcon.service-now.com/api/now/table/u_pnc_eastr"
+var cappm = "https://pncmelliniumfalcon.service-now.com/api/now/table/u_cappm";
+var jenkins = "";
 
 
 class App extends Component {
@@ -83,117 +92,166 @@ class App extends Component {
          ipTasks: [
            {
              name:"TSSC",
-             status: "pass"
+             status: "pass",
+             true: ""
            },
            {
              name:"TSC",
-             status: "pass"
+             status: "pass",
+             true: ""
            },
            {
              name: "FRM",
-             status: "pass"
+             status: "pass",
+             true: ""
            }
          ],
          planTasks: [
            {
              name:"Engagement Assessment and Plan",
-             status:"pass"
+             status:"pass",
+             true: ""
            },
            {
              name:"Application Request",
-             status:""
+             status:"pass",
+             true: ""
            },
            {
              name:"Inherent Risk Rating",
-             status:""
+             status:"pass",
+             true: ""
            },
            {
              name:"Technology delivery factory",
-             status:""
+             status:"pass",
+             true: ""
            },
            {
              name:"Business Requirements",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_business_requirements",
+             true: "Complete"
            },
            {
              name:"Cyber Security Project Engagement Survey",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_cyber_security_survey",
+             true: "true"
            },
            {
              name:"Cyber Security Mnemonic Survey",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_cyber_security_mnemonic_survey",
+             true: "Requirements Review Complete"
+
            },
            {
              name:"Phase Gate Planning",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_phase_gate_planning",
+             true: "Complete"
            }
          ],
          executeTasks: [
            {
              name:"Solution Requirements",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_solution_requirements",
+             true: "Complete"
            },
            {
              name:"Detailed Solution Design Package",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_detailed_solution_design_package",
+             true: "Complete"
            },
            {
              name:"Security Requirements",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_security_requirements",
+             true: "Complete"
            },
            {
              name:"Permit to build",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_ptb"
            },
            {
              name:"Test Strategy & Approach",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_test_strategy_and_approach",
+             true: "true"
            },
            {
              name:"Phase Gate Approval to Build",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_phase_gate_approval_to_build",
+             true: "Complete"
            },
            {
              name:"Build/Code",
-             status:""
+             status:"",
+             endpoint: jenkins,
+             true: ""
            },
            {
              name:"Server Build Request Dev",
-             status:""
+             status:"",
+             endpoint: cappm,
+             key: "u_serverbuilddev",
+             true: ""
            },
            {
              name:"Server Build Request QA",
-             status:""
+             status:"",
+             true: ""
            },
            {
              name:"TCOE Testing",
-             status:""
+             status:"",
+             true: ""
            },
            {
              name:"Test Results Summary Report",
-             status:""
+             status:"",
+             true: ""
            },
            {
              name:"Permit to Operate",
-             status:""
+             status:"",
+             true: ""
            },
            {
              name:"eBRP - SP",
-             status:""
+             status:"",
+             true: ""
            },
            {
              name:"Server Build Request",
-             status:""
+             status:"",
+             true: ""
            },
            {
              name:"Pre-Deploy",
-             status:""
+             status:"",
+             true: ""
            },
            {
              name:"Transition to BAU",
-             status:""
+             status:"",
+             true: ""
            }
-
 
          ]
 
@@ -211,8 +269,69 @@ class App extends Component {
     })
   }
 
+  updateTasks = ()=>{
+    console.log(serviceNowTasks);
+    let ipTasks = [];
+    let planTasks = [];
+    let executeTasks = [];
+
+    this.state.planTasks.map( (task)=>{
+      console.log(task);
+      if(serviceNowTasks.result[1][task.key]===task.true){
+        planTasks.push({
+          name: task.name,
+          status: "pass",
+          true: task.true
+        })
+      }else {
+        planTasks.push({
+          name: task.name,
+          status: "fail",
+          true: task.true
+        })
+      }
+    });
+
+    this.state.executeTasks.map( (task)=>{
+      console.log(task);
+      if(serviceNowTasks.result[1][task.key]===task.true){
+        executeTasks.push({
+          name: task.name,
+          status: "pass",
+          true: task.true
+        })
+      }else {
+        executeTasks.push({
+          name: task.name,
+          status: "fail",
+          true: task.true
+        })
+      }
+    });
+
+
+
+    this.setState({
+      planTasks: planTasks,
+      executeTasks: executeTasks,
+    })
+  }
+
+
+  componentDidMount(){
+    serviceNow(cappm);
+    setTimeout( () =>{
+      this.updateTasks();
+    }, 2000);
+
+  }
+
+  componentDisUpdate(){
+
+  }
 
   render() {
+
     return (
       <div className={this.state.stage ===2 ? "App is-dashboard" : "App"}>
 
